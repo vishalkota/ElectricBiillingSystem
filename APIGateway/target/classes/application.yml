@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: spring-cloud-gateway-app
+  cloud:
+    gateway:
+      routes:
+        - id: administrator-route
+          uri: http://localhost:8091
+          predicates:
+            - Path=/api/admins/**
+        - id: customer-route
+          uri: http://localhost:8092
+          predicates:
+            - Path=/api/customers/**
+        - id: MeterBilling-route
+          uri: http://localhost:8090
+          predicates:
+            - Path=/api/billing/**
+        - id: payment-route
+          uri: http://localhost:8093
+          predicates:
+            - Path=/payments/**
+server:
+  port: 8073
